@@ -50,6 +50,7 @@ public class Main {
             PreparedStatement ps = db.prepareStatement("SELECT * FROM Users");
             ResultSet results = ps.executeQuery();
 
+            //while loop
             while (results.next()){
                 int UserID = results.getInt(1);
                 String FirstName = results.getString(2);
