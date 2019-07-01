@@ -42,31 +42,4 @@ public class Main {
         }
     }
 
-    public static void Select() {
-
-        openDatabase("Database.db");
-
-        try {
-            PreparedStatement ps = db.prepareStatement("SELECT * FROM Users");
-            ResultSet results = ps.executeQuery();
-
-
-            while (results.next()){
-                int UserID = results.getInt(1);
-                String FirstName = results.getString(2);
-                String LastName = results.getString(3);
-                String Gender = results.getString(4);
-                String Username = results.getString(5);
-                String Password = results.getString(6);
-                String Email = results. getString(7);
-                System.out.println(UserID + " " + FirstName + " "  + LastName + " " + Username);
-            }
-
-        } catch (Exception exception) {
-            System.out.println("Database error " + exception.getMessage());
-        }
-        closeDatabase();
-    }
-
-
 }
