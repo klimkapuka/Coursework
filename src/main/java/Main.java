@@ -1,6 +1,6 @@
 import org.sqlite.SQLiteConfig;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

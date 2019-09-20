@@ -52,4 +52,22 @@ public class UserController {
 
         }
     }
+
+    //Updates the username of a user
+    public static void UpdateUsername(String Email, String Username)
+    {
+        try{
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Username = ? WHERE Email = ?");
+
+            ps.setString(1, Username);
+            ps.setString(2, Email);
+
+            ps.executeUpdate();
+            System.out.println("Username updated");
+
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            System.out.println("Error, something has gone wrong. Please contact the administrator.");
+        }
+    }
 }
