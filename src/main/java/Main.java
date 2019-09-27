@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         openDatabase("Database.db");
 // code to get data from, write to the database etc goes here!
+        UserController.deleteUser("thechrisjames");
         closeDatabase();
     }
 // opens the database
