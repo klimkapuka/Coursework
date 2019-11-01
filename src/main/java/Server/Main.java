@@ -1,6 +1,4 @@
 import org.sqlite.SQLiteConfig;
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,8 +8,33 @@ public class Main {
     public static Connection db = null;
 // main part of the program
     public static void main(String[] args) {
+
         openDatabase("Database.db");
-// code to get data from, write to the database etc goes here!
+
+        //preparing the Jersey Servlet
+        ResourceConfig config = new ResourceConfig();
+        config.packages("Controllers");
+        config.register(MultiPartFeature.class);
+
+        //Instantiating the Servlet
+        ServletHolder servlet = new ServletHolder(new ServletContainer(config));
+
+        Server server = new Server(8081);
+
+        //Connecting server to the Servlet
+        ServletContextHandler context = new ServletContextHandler(server, "/");
+        context.addServlet(servlet, "/*");
+
+        //staring server, cathing errors
+        try {
+            server.start();
+            System.out.println("Server successfully started.");
+            server.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // code to get data from, write to the database etc goes here!
         MealsController.getMeal(700, 1300);
         closeDatabase();
     }
