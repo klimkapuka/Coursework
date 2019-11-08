@@ -1,3 +1,12 @@
+package Controllers;
+
+import Server.Main;
+import com.sun.jersey.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -5,7 +14,6 @@ import java.sql.ResultSet;
 public class WeightsController {
 
     // Inserts a new log
-    public static void addLog(int userID, String date, double weight) {
         @POST
         @Path("new")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -34,14 +42,12 @@ public class WeightsController {
                 return "{\"error\": \"Unable to create new item, please see server console for more info.\"}";
             }
         }
-    }
-        // Outputs the logs of a specific user
 
-    public static void getLog(String username) {
+        // Outputs the logs of a specific user
         @GET
         @Path("list")
         @Produces(MediaType.APPLICATION_JSON)
-        public String listWeights () {
+        public String listWeights (@FormDataParam("username") String username) {
             System.out.println("Weights/list");
             JSONArray list = new JSONArray();
             try {
@@ -63,18 +69,16 @@ public class WeightsController {
             }
 
         }
-    }
+
 
         // Changes date and weight of a log
-
-    public static void updateLog(String date, String newDate, double newWeight) {
         @POST
         @Path("update")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
-        public String updateWeigths(
+        public static String updateWeigths(
                 @FormDataParam("date") String date, @FormDataParam("newDate") String newDate, @FormDataParam("newWeight") Double newWeight) {
-    }
+
 
         try {
             if (date == null || newDate == null || newWeight == null) {

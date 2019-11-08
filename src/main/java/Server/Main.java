@@ -1,3 +1,11 @@
+package Server;
+
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
 import org.sqlite.SQLiteConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,7 +43,6 @@ public class Main {
         }
 
         // code to get data from, write to the database etc goes here!
-        MealsController.getMeal(700, 1300);
         closeDatabase();
     }
 // opens the database
@@ -67,3 +74,4 @@ public class Main {
     }
 
 }
+

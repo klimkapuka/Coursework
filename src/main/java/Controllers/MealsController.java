@@ -1,18 +1,29 @@
+package Controllers;
+
+import Server.Main;
+
+
+import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
+@Path("Meals/")
 public class MealsController {
 
     // Inserting a new meal into the Meals table
-    public static void addMeal(String name, int calories, int carbs, int fat, int protein) {
-
-        @POST
+    @POST
         @Path("new")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
-        public String insertMeal (
-                @FormDataParam("name") String name, @FormDataParam("calories") Integer calories,
-                @FormDataParam("carbs") Integer carbs, @FormDataParam("fat") Integer fat, @FormDataParam("protein") Integer protein){
+        public static String insertMeal (
+            @FormDataParam("name") String name, @FormDataParam("calories") Integer calories,
+            @FormDataParam("carbs") Integer carbs, @FormDataParam("fat") Integer fat, @FormDataParam("protein") Integer protein){
 
             try {
                 if (name == null || calories == null || carbs == null || fat == null || protein == null) {
@@ -36,15 +47,15 @@ public class MealsController {
                 return "{\"error\": \"Unable to create new item, please see server console for more info.\"}";
             }
         }
-    }
+
 
     // Outputting a meal based on calorie range
-    public static void getMeal(int lower, int upper) {
+
 
         @GET
         @Path("list")
         @Produces(MediaType.APPLICATION_JSON)
-        public String listMeals () {
+        public static String listMeals (@FormDataParam("lower") int lower, @FormDataParam("upper") int upper) {
             System.out.println("meals/list");
             JSONArray list = new JSONArray();
 
@@ -74,5 +85,5 @@ public class MealsController {
 
             }
         }
-    }
+
 }
