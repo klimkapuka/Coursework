@@ -50,25 +50,27 @@ public class UserController {
 
         }
 
-    //Inserts a new user into the Users table
-
+        //Inserts a new user into the Users table
         @POST
         @Path("create")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public static String insertUser(
-                @FormDataParam("firstName")  String firstName, @FormDataParam("lastName") String lastName, @FormDataParam("gender") String gender,
+                @FormDataParam("firstName")  String firstName, @FormDataParam("lastName") String lastName,
+                @FormDataParam("gender") String gender,
                 @FormDataParam("username") String username, @FormDataParam("password") String password,
                 @FormDataParam("email") String email, @FormDataParam("idealWeight") Double idealWeight){
 
             try{
                 System.out.println("Running");
-                if (firstName == null || lastName == null || gender == null || username == null || password == null || email == null || idealWeight == null){
+                if (firstName == null || lastName == null || gender == null || username == null || password == null
+                        || email == null || idealWeight == null){
                     throw new Exception("One or more form data parameters are missing in the HTTP request.");
                 }
                 System.out.println("user/new username=" + username);
 
-                PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Users (FirstName, LastName, Gender, Username, Password, Email, IdealWeight) VALUES (?,?,?,?,?,?,?)");
+                PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Users (FirstName, LastName, Gender," +
+                        " Username,Password, Email, IdealWeight) VALUES (?,?,?,?,?,?,?)");
 
                 ps.setString(1, firstName);
                 ps.setString(2, lastName);
@@ -84,13 +86,12 @@ public class UserController {
             } catch (Exception exception) {
                 System.out.println("Database error: " + exception.getMessage());
                 return "{\"error\": \"Unable to create new item, please see server console for more info.\"}";
-
             }
         }
 
-    //Updates the username of a user
+        //Updates the username of a user
         @POST
-        @Path("update-username")
+        @Path("change-username")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public static String updateUsername (
@@ -120,11 +121,11 @@ public class UserController {
     //Updates the password of a user
 
         @POST
-        @Path("update-password")
+        @Path("change-password")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public String updatePassword (
-                @FormDataParam("Password") String password, @FormDataParam("Username") String username){
+                @FormDataParam("password") String password, @FormDataParam("username") String username){
 
             try {
                 if (password == null || username == null) {
@@ -147,18 +148,17 @@ public class UserController {
         }
 
 
-    //Deletes a user
-
+        //Deletes a user
         @POST
         @Path("delete")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
-        public static String deleteUser (@FormDataParam("Username") String username){
+        public static String deleteUser (@FormDataParam("username") String username){
             try {
                 if (username == null) {
                     throw new Exception("One or more form data parameters are missing in the HTTP request.");
                 }
-                System.out.println("users/delere username=" + username);
+                System.out.println("users/delete username=" + username);
                 PreparedStatement ps = Main.db.prepareStatement("DELETE FROM Users WHERE Username = ?");
 
                 ps.setString(1, username);

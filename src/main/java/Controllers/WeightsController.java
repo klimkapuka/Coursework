@@ -1,7 +1,7 @@
 package Controllers;
 
 import Server.Main;
-import com.sun.jersey.multipart.FormDataParam;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -10,12 +10,12 @@ import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
+@Path("weight/")
 public class WeightsController {
 
     // Inserts a new log
         @POST
-        @Path("new")
+        @Path("log-new")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public String insertLog (
@@ -51,7 +51,8 @@ public class WeightsController {
             System.out.println("Weights/list");
             JSONArray list = new JSONArray();
             try {
-                PreparedStatement ps = Main.db.prepareStatement("SELECT DateRecorded, CurrentWeight FROM Weights WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)");
+                PreparedStatement ps = Main.db.prepareStatement("SELECT DateRecorded, CurrentWeight FROM " +
+                        "Weights WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)");
                 ps.setString(1, username);
                 ResultSet results = ps.executeQuery();
 
@@ -67,7 +68,6 @@ public class WeightsController {
                 System.out.println("Database error: " + exception.getMessage());
                 return "{\"error\": \"Unable to list items, please see server console for more info.\"}";
             }
-
         }
 
 
