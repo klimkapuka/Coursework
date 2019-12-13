@@ -13,23 +13,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-@Path("Meals/")
+@Path("meals/")
 public class MealsController {
 
     // Inserting a new meal into the Meals table
     @POST
-        @Path("new")
+        @Path("add")
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public static String insertMeal (
-            @FormDataParam("name") String name, @FormDataParam("calories") Integer calories,
-            @FormDataParam("carbs") Integer carbs, @FormDataParam("fat") Integer fat, @FormDataParam("protein") Integer protein){
+            @FormDataParam("name") String name, @FormDataParam("calories") int calories,
+            @FormDataParam("carbs") int carbs, @FormDataParam("fat") int fat, @FormDataParam("protein") int protein){
 
             try {
-                if (name == null || calories == null || carbs == null || fat == null || protein == null) {
-                    throw new Exception("One or more form data parameters are missing in the HTTP request.");
-                }
-                System.out.println("meal/add name=" + name);
+                                System.out.println("meal/add name=" + name);
 
                 PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Meals (MealName, Calories, Carbs, Fat, Protein) VALUES (?, ?, ?, ?, ?) ");
 
@@ -52,7 +49,7 @@ public class MealsController {
     // Outputting a meal based on calorie range
 
 
-        @GET
+        @POST
         @Path("list")
         @Produces(MediaType.APPLICATION_JSON)
         public static String listMeals (@FormDataParam("lower") int lower, @FormDataParam("upper") int upper) {
@@ -85,5 +82,7 @@ public class MealsController {
 
             }
         }
+
+
 
 }

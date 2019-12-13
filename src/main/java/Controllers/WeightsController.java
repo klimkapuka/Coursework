@@ -44,11 +44,11 @@ public class WeightsController {
         }
 
         // Outputs the logs of a specific user
-        @GET
-        @Path("list")
+        @POST
+        @Path("track")
         @Produces(MediaType.APPLICATION_JSON)
         public String listWeights (@FormDataParam("username") String username) {
-            System.out.println("Weights/list");
+            System.out.println("weights/track");
             JSONArray list = new JSONArray();
             try {
                 PreparedStatement ps = Main.db.prepareStatement("SELECT DateRecorded, CurrentWeight FROM " +
@@ -58,7 +58,7 @@ public class WeightsController {
 
                 while (results.next()) {
                     JSONObject item = new JSONObject();
-                    item.put("DateRecorder", results.getString(1));
+                    item.put("DateRecorded", results.getString(1));
                     item.put("CurrentWeight", results.getDouble(2));
                     list.add(item);
                 }
