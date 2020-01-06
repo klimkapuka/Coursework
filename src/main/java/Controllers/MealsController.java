@@ -23,7 +23,8 @@ public class MealsController {
         @Produces(MediaType.APPLICATION_JSON)
         public static String insertMeal (
             @FormDataParam("name") String name, @FormDataParam("calories") int calories,
-            @FormDataParam("carbs") int carbs, @FormDataParam("fat") int fat, @FormDataParam("protein") int protein){
+            @FormDataParam("carbs") int carbs, @FormDataParam("fat") int fat, @FormDataParam("protein") int protein,
+            @CookieParam("token") String token){
 
             try {
                                 System.out.println("meal/add name=" + name);
