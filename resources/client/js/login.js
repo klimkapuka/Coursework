@@ -5,7 +5,9 @@ function pageLoad() {
         logout();
     } else {
         document.getElementById("loginButton").addEventListener("click", login);
+        document.getElementById("registerButton").addEventListener("click", register);
     }
+
 
 }
 
@@ -29,6 +31,14 @@ function login(event) {
             window.location.href = '/client/index.html';
         }
     });
+}
+function register(event) {
+
+    event.preventDefault();
+
+    const form = document.getElementById("loginForm");
+    const formData = new FormData(form);
+
 }
 
 function logout() {

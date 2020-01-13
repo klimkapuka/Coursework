@@ -4,29 +4,34 @@
     <meta charset="UTF-8">
     <title id="title">Meal Planner</title>
     <link rel="stylesheet" type="text/css" href="/client/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/client/css/login.css">
     <script src="/client/js/js.cookie.js"></script>
     <script src="/client/js/login.js"></script>
 </head>
 
 <body onload="pageLoad()">
 <div id="content">
-<ul>
-    <li><a class="navbar" href="index.html">Home</a> </li>
-    <li><a class="navbar" href="weights.html">Weight</a> </li>
-    <li><a class="navbar" href="meals.html">Meals</a> </li>
-    <li style="float: right"><a class="navbar" href="login.html">Login</a> </li>
-    <li style="float: right"><a class="navbar" href="profile.html">Profile</a> </li>
-</ul>
+<div>
+    <ul>
+        <li><a href="index.html">Home</a> </li>
+        <li><a href="weights.html">Weight</a> </li>
+        <li><a href="meals.html">Meals</a> </li>
+        <li style="float: right"><a href="login.html">Login</a> </li>
+        <li style="float: right"><a href="profile.html">Profile</a> </li>
+    </ul>
+</div>
 
 <div class="login">
-<form id="loginForm" >
+<form id="loginForm">
     <a>Username: </a><br>
     <input type="text" name="username" placeholder="Username.."><br>
     <a>Password: </a><br>
-    <input type="text" name="password" placeholder="Password..">
-    <input type="submit" value="Login" id="login-button">
+    <input type="password" name="password" placeholder="Password.."><br>
+    <input type="submit" value="Login" id="loginButton">
+    <input type="submit" value="Register" id="registerButton">
 </form>
 </div>
 </div>
+
 </body>
 </html>
