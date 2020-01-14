@@ -1,13 +1,13 @@
-.login{
-    margin-top: 270px;
+.register{
     text-align: center;
+    margin-top: 150px;
 }
 
 form{
     display: inline-block;
 }
 
-input[type=text], input[type=password]{
+input[type=text], input[type=password], select{
     width: 500px;
     padding: 12px 20px;
     margin: 8px 0;
@@ -29,4 +29,11 @@ input[type=submit]{
 
 a{
     padding: 12px;
+}
+
+#successful{
+    font-family: Corbel, serif;
+    border: #333333 2px solid;
+    padding: 20px;
+    margin: 200px;
 }

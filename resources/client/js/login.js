@@ -7,8 +7,6 @@ function pageLoad() {
         document.getElementById("loginButton").addEventListener("click", login);
         document.getElementById("registerButton").addEventListener("click", register);
     }
-
-
 }
 
 function login(event) {
@@ -36,8 +34,7 @@ function register(event) {
 
     event.preventDefault();
 
-    const form = document.getElementById("loginForm");
-    const formData = new FormData(form);
+    window.location.href = '/client/register.html';
 
 }
 

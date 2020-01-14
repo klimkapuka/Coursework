@@ -86,7 +86,7 @@ public class UserController {
 
             } catch (Exception exception) {
                 System.out.println("Database error: " + exception.getMessage());
-                return "{\"error\": \"Unable to create new item, please see server console for more info.\"}";
+                return "{\"error\": \"One or more of the required fields are empty! \"}";
             }
         }
 
