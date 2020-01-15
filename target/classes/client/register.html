@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">Register</title>
+    <link rel="stylesheet" type="text/css" href="/client/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/client/css/register.css">
+    <script src="/client/js/js.cookie.js"></script>
+    <script src="/client/js/register.js"></script>
+</head>
+
+<body onload="pageLoad()">
+<div id="content">
+<div>
+    <ul>
+        <li><a href="index.html">Home</a> </li>
+        <li><a href="weights.html">Weight</a> </li>
+        <li><a href="meals.html">Meals</a> </li>
+        <li style="float: right"><a href="login.html">Login</a> </li>
+        <li style="float: right"><a href="profile.html">Profile</a> </li>
+    </ul>
+</div>
+
+<div class="register">
+<form id="registerForm">
+    <a>Fisrt Name: </a><br>
+    <input type="text" name="firstName" placeholder="First Name.."><br>
+    <a>Last Name: </a><br>
+    <input type="text" name="lastName" placeholder="Last Name.."><br>
+    <a>Gender: </a><br>
+    <select name="gender">
+    	<option value="Male">Male</option>
+    	<option value="Female">Female</option>
+    </select>
+    <a>Username: </a><br>
+    <input type="text" name="username" Placeholder="Username.."><br>
+    <a>Password: </a><br>
+    <input type="password" name="password" Placeholder="Password.."><br>
+    <a>Email: </a><br>
+    <input type="text" name="email" Placeholder="Email.."><br>
+    <a>Ideal Weight: </a><br>
+    <input type="text" name="idealWeight" Placeholder="Your desired weight.."><br>
+    <input type="submit" value="Register" id="registerButton">
+</form>
+</div>
+</div>
+
+</body>
+</html>
