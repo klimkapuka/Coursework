@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    margin: 150px 200px;
+}
+
+.column{
+    flex: 20%;
+}
+
+.image{
+    border-style: groove;
+    transition: transform .5s;
+}
+
+.image:hover {
+    transform: scale(1.5);
+}
