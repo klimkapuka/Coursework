@@ -7,7 +7,7 @@ function pageLoad() {
         if (responseData.hasOwnProperty('error')) {
             alert(responseData.error);
         } else {
-            document.getElementById("userInfo").innerHTML = `<label id="name">reponseData.FirstName</label><br>
+            document.getElementById("userInfo").innerHTML = `<label id="name">${responseData.FirstName}</label><br>
         <label id="surname"></label><br>
         <label id="gender"></label><br>
         <label id="username"></label><br>
