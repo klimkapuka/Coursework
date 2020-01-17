@@ -23,7 +23,13 @@
 
 <div class="row">
     <div class="column">
-        <img class="image" src="/client/img/chicken-fattoush.jpg" alt="Chicken Fattoush" style="width:230px; height: 200px">
+        <img onclick="document.getElementById('modal1').style.display='block'" class="image" src="/client/img/chicken-fattoush.jpg" alt="Chicken Fattoush" style="width:230px; height: 200px">
+        <div class="modal" id="modal1">
+            <div class="modalContent">
+                <label>Chicken Fattoush</label><br>
+                <label>Protein: 32g Fat: 16g Carbs: 23g</label>
+            </div>
+        </div>
     </div>
     <div class="column">
         <img class="image" src="/client/img/fresh-salmon-with-thai-noodle-salad.jpg" alt="Salmon with Thai Noodle Salad" style="width:230px; height: 200px">
