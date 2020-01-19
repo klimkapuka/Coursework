@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="/client/css/styles.css">
-    <script src="/client/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="/client/css/profile.css">
+    <script src="/client/js/profile.js"></script>
 </head>
 <body onload="pageLoad()">
+
 <div>
     <ul>
         <li><a href="index.html">Home</a> </li>
@@ -16,5 +18,24 @@
         <li style="float: right"><a href="profile.html">Profile</a> </li>
     </ul>
 </div>
+
+<div id="content">
+    <h1 style="text-align: center; font-family: 'Adobe Devanagari',sans-serif">My Profile</h1>
+    <div>
+    <div id="imgContainer">
+        <img id="avatar" src="/client/img/avatar.png" alt="Avatar">
+    </div>
+    <div id="userInfo">
+        <label id="name"></label><br>
+        <label id="surname"></label><br>
+        <label id="gender"></label><br>
+        <label id="username"></label><br>
+        <label id="password"></label><br>
+        <label id="email"></label><br>
+        <label id="idealWeight"></label>
+    </div>
+    </div>
+</div>
+
 </body>
 </html>
