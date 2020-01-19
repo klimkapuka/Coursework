@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/client/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/client/css/register.css">
+    <script src="/client/js/register.js"></script>
+</head>
+<body onload="pageLoad()">
+<div id="content">
+    <div>
+        <ul>
+            <li><a href="index.html">Home</a> </li>
+            <li><a href="weights.html">Weight</a> </li>
+            <li><a href="meals.html">Meals</a> </li>
+            <li style="float: right"><a href="login.html">Login</a> </li>
+            <li style="float: right"><a href="profile.html">Profile</a> </li>
+        </ul>
+    </div>
+
+    <div class="register">
+        <form id="registerForm">
+            <a>First Name: </a><br>
+            <input type="text" name="firstName" placeholder="Name.." required><br>
+            <a>Last Name: </a><br>
+            <input type="text" name="lastName" placeholder="Surname.." required><br>
+            <a>Gender: </a><br>
+            <select name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br>
+            <a>Username: </a><br>
+            <input type="text" name="username" placeholder="Username.." required><br>
+            <a>Password: </a><br>
+            <input type="password" name="password" placeholder="Password.." required><br>
+            <a>Email: </a><br>
+            <input type="text" name="email" placeholder="Email.."><br>
+            <a>Desired Weight: </a><br>
+            <input type="text" name="idealWeight" placeholder="Your desired weight.."><br>
+            <input type="submit" value="Register" id="registerButton">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
