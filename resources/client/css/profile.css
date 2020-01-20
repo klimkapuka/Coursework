@@ -14,3 +14,18 @@
     height: 200px;
     width: 200px;
 }
+
+#logoutButton{
+    width: 100px;
+    padding: 12px;
+    margin: 10px 10px;
+    border: 1px solid #333333;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.userInfo{
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    margin: 12px;
+    }

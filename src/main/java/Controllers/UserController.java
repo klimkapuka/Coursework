@@ -24,14 +24,14 @@ public class UserController {
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public static String listUsers(
-                @FormDataParam("username")  String username
+                @CookieParam("token") String token
         ) {
             System.out.println("users/list");
             JSONArray list = new JSONArray();
 
             try {
-                PreparedStatement ps = Main.db.prepareStatement("SELECT FirstName, LastName, Gender, Username, Password, Email, IdealWeight FROM Users WHERE Username = ?");
-                ps.setString(1, username);
+                PreparedStatement ps = Main.db.prepareStatement("SELECT FirstName, LastName, Gender, Username, Password, Email, IdealWeight FROM Users WHERE Token = ?");
+                ps.setString(1, token);
                 ResultSet results = ps.executeQuery();
 
                 while (results.next()){
@@ -258,7 +258,8 @@ public class UserController {
     @Path("logout")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public String logoutUser(@CookieParam("token") String token) {
+    public String logoutUser(
+            @CookieParam("token") String token) {
 
         try {
 
@@ -301,6 +302,8 @@ public class UserController {
         }
     }
 }
+
+
 
 
 
