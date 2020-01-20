@@ -2,7 +2,7 @@ function pageLoad() {
 
     let modal = document.getElementById('modal1');
     window.onclick = function (event) {
-        if  (event.target == modal) {
+        if  (event.target === modal) {
             modal.style.display = "none";
         }
     }
@@ -13,39 +13,11 @@ function checkLogin() {
 
     let username = Cookies.get("username");
 
-    let logInHTML = '';
-
     if (username === undefined) {
-
-        let editButtons = document.getElementsByClassName("editButton");
-        for (let button of editButtons) {
-            button.style.visibility = "hidden";
-        }
-
-        let deleteButtons = document.getElementsByClassName("deleteButton");
-        for (let button of deleteButtons) {
-            button.style.visibility = "hidden";
-        }
-
-        logInHTML = "Not logged in. <a href='/client/login.html'>Log in</a>";
+        return false;
     } else {
-
-        let editButtons = document.getElementsByClassName("editButton");
-        for (let button of editButtons) {
-            button.style.visibility = "visible";
-        }
-
-        let deleteButtons = document.getElementsByClassName("deleteButton");
-        for (let button of deleteButtons) {
-            button.style.visibility = "visible";
-        }
-
-        logInHTML = "Logged in as " + username + ". <a href='/client/login.html?logout'>Log out</a>";
-
+        return true;
     }
-
-    document.getElementById("loggedInDetails").innerHTML = logInHTML;
-
 }
 
 

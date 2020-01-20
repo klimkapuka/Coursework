@@ -21,15 +21,18 @@ public class UserController {
 
         @GET
         @Path("list")
+        @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
-        public static String listUsers() {
+        public static String listUsers(
+                @FormDataParam("username")  String username
+        ) {
             System.out.println("users/list");
             JSONArray list = new JSONArray();
 
             try {
-                PreparedStatement ps = Main.db.prepareStatement("SELECT FirstName, LastName, Gender, Username, Password, Email, IdealWeight FROM Users");
+                PreparedStatement ps = Main.db.prepareStatement("SELECT FirstName, LastName, Gender, Username, Password, Email, IdealWeight FROM Users WHERE Username = ?");
+                ps.setString(1, username);
                 ResultSet results = ps.executeQuery();
-
 
                 while (results.next()){
                     JSONObject item = new JSONObject();

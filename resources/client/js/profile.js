@@ -1,20 +1,26 @@
 function pageLoad() {
 
-    fetch("/user/list", {method: 'get'}
-    ).then(response => response.json()
-    ).then(responseData => {
+    if (checkLogin() === false) {
+        window.location.href = "index.html";
+    } else {
 
-        if (responseData.hasOwnProperty('error')) {
-            alert(responseData.error);
-        } else {
-            document.getElementById("userInfo").innerHTML = `<label id="name">${responseData.FirstName}</label><br>
-        <label id="surname"></label><br>
-        <label id="gender"></label><br>
-        <label id="username"></label><br>
-        <label id="password"></label><br>
-        <label id="email"></label><br>
-        <label id="idealWeight"></label>`;
+        let username = Cookies.get("username");
+
+        fetch("/user/list", {method: 'get', body: username}
+        ).then(response => response.json()
+        ).then(responseData => {
+
+            if (responseData.hasOwnProperty('error')) {
+                alert(responseData.error);
+            } else {
+                document.getElementById("userInfo").innerHTML = `<label id="name">${responseData.FirstName}</label><br>
+        <label id="surname">${responseData.LastName}</label><br>
+        <label id="gender">${responseData.Gender}</label><br>
+        <label id="username">${responseData.Username}</label><br>
+        <label id="password">${responseData.Password}</label><br>
+        <label id="email">${responseData.Email}</label><br>
+        <label id="idealWeight">${responseData.IdealWeight}</label>`;
             }
-    });
-
+        });
+    }
 }

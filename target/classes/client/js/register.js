@@ -18,7 +18,7 @@ function register(event) {
             document.getElementById("content").innerHTML = '<h1 id="successful">User successfully created!</h1>';
             setTimeout(function (){
                 window.location.href = "login.html"
-            }, 3000);
+            }, 2000);
 
         }
 });

@@ -2,9 +2,13 @@
     box-sizing: border-box;
 }
 
+#grid{
+    margin: 150px 200px;
+}
+
 .row {
     display: flex;
-    margin: 150px 200px;
+    margin: 20px 0;
 }
 
 .column{
@@ -17,13 +21,12 @@
 }
 
 .image:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .modalContent{
     padding: 12px;
     border: 1px solid #333333;
-    transition: transofrm .5s;
     margin: 10% auto 15% auto;
     width: 50%;
     background-color: #ffeeff;
