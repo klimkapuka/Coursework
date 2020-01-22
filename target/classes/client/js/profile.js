@@ -1,26 +1,44 @@
 function pageLoad() {
 
-    if (checkLogin() === false) {
-        window.location.href = "index.html";
-    } else {
-
-        let username = Cookies.get("username");
-
-        fetch("/user/list", {method: 'get', body: username}
+        let profileHTML ="";
+        fetch("/user/list", {method: 'get'}
         ).then(response => response.json()
         ).then(responseData => {
 
             if (responseData.hasOwnProperty('error')) {
                 alert(responseData.error);
             } else {
-                document.getElementById("userInfo").innerHTML = `<label id="name">${responseData.FirstName}</label><br>
-        <label id="surname">${responseData.LastName}</label><br>
-        <label id="gender">${responseData.Gender}</label><br>
-        <label id="username">${responseData.Username}</label><br>
-        <label id="password">${responseData.Password}</label><br>
-        <label id="email">${responseData.Email}</label><br>
-        <label id="idealWeight">${responseData.IdealWeight}</label>`;
+                for(let profile of responseData)
+                profileHTML = `<label class="userInfo">Name: ${profile.FirstName}</label><br>` +
+                    `<label class="userInfo">Surname ${profile.LastName}</label><br>` +
+                    `<label class="userInfo">Gender: ${profile.Gender}</label><br>` +
+                    `<label class="userInfo">Username: ${profile.Username}</label><br>` +
+                    `<label class="userInfo">Password: ${profile.Password}</label><br>` +
+                    `<label class="userInfo">Email: ${profile.Email}</label><br>` +
+                    `<label class="userInfo">Desired Weight: ${profile.IdealWeight}</label>`;
+                document.getElementById("userInfo").innerHTML = profileHTML;
+
+
             }
         });
-    }
+
+        document.getElementById("logoutButton").addEventListener("click", logout);
+}
+
+function logout() {
+
+    fetch("/user/logout", {method: 'post'}
+    ).then(response => response.json()
+    ).then(responseData => {
+        if (responseData.hasOwnProperty('error')) {
+
+            alert(responseData.error);
+
+        } else {
+
+            window.location.href = '/client/index.html';
+
+        }
+    });
+
 }
