@@ -47,13 +47,13 @@ public class WeightsController {
         @POST
         @Path("track")
         @Produces(MediaType.APPLICATION_JSON)
-        public String listWeights (@FormDataParam("username") String username) {
+        public String listWeights (@CookieParam("token") String token) {
             System.out.println("weights/track");
             JSONArray list = new JSONArray();
             try {
                 PreparedStatement ps = Main.db.prepareStatement("SELECT DateRecorded, CurrentWeight FROM " +
-                        "Weights WHERE UserID = (SELECT UserID FROM Users WHERE Username = ?)");
-                ps.setString(1, username);
+                        "Weights WHERE UserID = (SELECT UserID FROM Users WHERE Token = ?)");
+                ps.setString(1, token);
                 ResultSet results = ps.executeQuery();
 
                 while (results.next()) {
@@ -62,7 +62,9 @@ public class WeightsController {
                     item.put("CurrentWeight", results.getDouble(2));
                     list.add(item);
                 }
+                System.out.println(list);
                 return list.toString();
+
 
             } catch (Exception exception) {
                 System.out.println("Database error: " + exception.getMessage());
