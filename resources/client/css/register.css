@@ -15,7 +15,6 @@ input[type=text], input[type=password], select{
     text-decoration: none;
     border: 1px solid #333333;
     outline-style: none;
-
 }
 
 input[type=submit]{
