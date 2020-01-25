@@ -4,3 +4,22 @@
     font-size: 20px;
     padding: 50px;
 }
+
+input[type=text], input[type=password], select{
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 1px solid #333333;
+    outline-style: none;
+}
+
+input[type=submit]{
+    width: 100px;
+    padding: 12px;
+    margin: 10px 10px;
+    background-color: #4CAF50;
+    border: 1px solid #333333;
+    color: white;
+}

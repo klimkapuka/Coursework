@@ -23,8 +23,14 @@
 <div id="message">Welcome to your weight tracker. Here you can view the progress you've made over the past months and plan for the journey ahead! Good luck on reaching your goals!</div>
 <div id="chart" style="width: 900px; height: 500px; margin: 20px auto"></div>
 
-<div>
-
+<div class="weightLog">
+    <form id="weightForm">
+        <a>Date Recorded: </a><br>
+        <input type="text" name="dateRecorded" placeholder="DD/MM/YYYY.." required><br>
+        <a>Weight: </a><br>
+        <input type="text" name="weightRecorded" placeholder="Weight.." required><br>
+        <input type="submit" value="Log Weight" id="weightButton">
+    </form>
 </div>
 
 </body>

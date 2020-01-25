@@ -55,5 +55,6 @@
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" level="project" />
     <orderEntry type="library" name="loader" level="application" />
+    <orderEntry type="library" name="loader" level="application" />
   </component>
 </module>

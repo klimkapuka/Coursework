@@ -52,7 +52,7 @@ public class WeightsController {
             JSONArray list = new JSONArray();
             try {
                 PreparedStatement ps = Main.db.prepareStatement("SELECT DateRecorded, CurrentWeight FROM " +
-                        "Weights WHERE UserID = (SELECT UserID FROM Users WHERE Token = ?)");
+                        "Weights WHERE UserID = (SELECT UserID FROM Users WHERE Token = ?) ORDER BY DateRecorded ASC ");
                 ps.setString(1, token);
                 ResultSet results = ps.executeQuery();
 
