@@ -25,3 +25,10 @@ li a:hover{
 body{
     background-color: white;
 }
+
+.topSection{
+    font-family: Verdana, sans-serif;
+    font-size: 27px;
+    text-align: center;
+    margin: 50px 0;
+}

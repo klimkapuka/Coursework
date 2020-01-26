@@ -33,7 +33,7 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(server, "/");
         context.addServlet(servlet, "/*");
 
-        //staring server, cathing errors
+        //staring server, catching errors
         try {
             server.start();
             System.out.println("Server successfully started.");

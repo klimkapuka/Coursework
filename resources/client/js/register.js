@@ -15,11 +15,7 @@ function register(event) {
         if (responseData.hasOwnProperty('error')) {
             alert(responseData.error);
         } else {
-            document.getElementById("content").innerHTML = '<h1 id="successful">User successfully created!</h1>';
-            setTimeout(function (){
-                window.location.href = "login.html"
-            }, 2000);
-
-        }
+           window.location.href = "login.html"
+           }
 });
 }

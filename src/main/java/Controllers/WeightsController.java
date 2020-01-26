@@ -19,20 +19,18 @@ public class WeightsController {
         @Consumes(MediaType.MULTIPART_FORM_DATA)
         @Produces(MediaType.APPLICATION_JSON)
         public String insertLog (
-                @FormDataParam("userID") Integer userID, @FormDataParam("date") String
-        date, @FormDataParam("weight") Double weight){
+                @FormDataParam("dateRecorded") String date, @FormDataParam("weightRecorded") Double weight, @CookieParam("token") String token){
 
             try {
-                if (userID == null || date == null || weight == null) {
+                if (date == null || weight == null) {
                     throw new Exception("One or more form data parameters are missing in the HTTP request.");
                 }
-                System.out.println("weights/new userID=" + userID);
 
-                PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Weights (UserID, DateRecorded, CurrentWeight) VALUES (?, ?, ?) ");
+                PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Weights (UserID, DateRecorded, CurrentWeight) " +
+                        "VALUES ((SELECT UserID FROM Users WHERE Token = token), ?, ?) ");
 
-                ps.setInt(1, userID);
-                ps.setString(2, date);
-                ps.setDouble(3, weight);
+                ps.setString(1, date);
+                ps.setDouble(2, weight);
 
                 ps.executeUpdate();
                 return "{\"status\": \"OK\"}";

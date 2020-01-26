@@ -25,11 +25,13 @@
 }
 
 .modalContent{
-    padding: 12px;
+    padding: 20px;
     border: 1px solid #333333;
-    margin: 10% auto 15% auto;
     width: 50%;
     background-color: white;
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    margin: 12% auto 15% auto;
 }
 
 .modal{
@@ -44,9 +46,4 @@
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
-}
-
-#topSection{
-    margin: 50px 0 0 0;
-    text-align: center;
 }
